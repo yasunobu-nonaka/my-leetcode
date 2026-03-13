@@ -2,7 +2,7 @@ class Solution:
     # def findErrorNums(self, nums: List[int]) -> List[int]:
     def findErrorNums(self, nums):
         # 本来想定される配列
-        expected = list(range(1, len(nums) + 1))
+        expected = set(range(1, len(nums) + 1))
 
         # 重複している数字と欠けている数字
         duplicated = None
