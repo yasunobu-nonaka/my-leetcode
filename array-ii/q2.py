@@ -1,19 +1,17 @@
 class Solution:
     # def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
     def smallerNumbersThanCurrent(self, nums):
-        ans = []
         n = len(nums)
-
-        # 数字を一つずつより小さい数字が何個あるか調べる
+        ans = [0] * n
+        # 数字を一つずつ見てそれより小さい他の数字が何個あるか調べる
         for i in range(n):
-            count = 0
-            j = 0
-            while j < n:
-                # 見た数が小さければcount + 1
-                if j != i and nums[j] < nums[i]:
-                    count += 1
-                j += 1
-            ans.append(count)
+            for j in range(i + 1, n):
+                # 自分のが大きければ自身の位置のカウントを+1
+                if nums[j] < nums[i]:
+                    ans[i] = ans[i] + 1
+                # 相手のが大きければ相手の位置のカウントを+1
+                elif nums[j] > nums[i]:
+                    ans[j] = ans[j] + 1
 
         return ans
 
